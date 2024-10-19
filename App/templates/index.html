@@ -1,11 +1,11 @@
 {% extends "base.html" %} {% block content %}
-
+<center>
 <h2>Image Classifier</h2>
 
 <div>
     <form id="upload-file" method="post" enctype="multipart/form-data">
         <label for="imageUpload" class="upload-label">
-            Choose...
+            Upload
         </label>
         <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg">
     </form>
@@ -27,5 +27,85 @@
     </h3>
 
 </div>
+
+<div class="form-container">
+    <div class="header">
+        <h2>Report</h2>
+        <p>Please enter the following details:</p>
+    </div>
+
+    <form action="" method="post" class="input-form">
+        <div class="form-group">
+            <label for="cpw">Enter concave points_worst:</label>
+            <input type="number" id="cpw" name="cpw" required>
+        </div>
+
+        <div class="form-group">
+            <label for="cpm">Enter concave points_mean:</label>
+            <input type="number" id="cpm" name="cpm" required>
+        </div>
+
+        <div class="form-group">
+            <label for="rm">Enter radius_mean:</label>
+            <input type="number" id="rm" name="rm" required>
+        </div>
+
+        <div class="form-group">
+            <label for="rw">Enter radius_worst:</label>
+            <input type="number" id="rw" name="rw" required>
+        </div>
+
+        <div class="form-group">
+            <label for="aw">Enter area_worst:</label>
+            <input type="number" id="aw" name="aw" required>
+        </div>
+
+        <div class="submit-button">
+            <button type="button" id="submit-button">Submit</button>
+        </div>
+
+        <div id="result" class="result-text"></div>
+    </form>
+</div>
+
+<script>
+    const form = document.getElementById('prediction-form');
+    const submitButton = document.getElementById('submit-button');
+    const resultElement = document.getElementById('result');
+
+    submitButton.addEventListener('click', () => {
+        const data = {
+            "data": [
+                parseInt(document.getElementById('cpw').value),
+                parseInt(document.getElementById('cpm').value),
+                parseInt(document.getElementById('rm').value),
+                parseInt(document.getElementById('rw').value),
+                parseInt(document.getElementById('aw').value)
+            ]
+        };
+    
+        fetch('http://127.0.0.1:5000/predictform', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.result == 1){
+                    resultElement.textContent = `Prediction: Breast cancer detected.`;
+                }else{
+                    resultElement.textContent = `Prediction: Breast cancer not detected.`;
+                }
+  
+            })
+            .catch(error => {
+                resultElement.textContent = 'An error occurred. Please try again.';
+            });
+        });
+    </script>
+
+</center>
 
 {% endblock %}

@@ -22,10 +22,12 @@ input[type="file"] {
 
 .upload-label{
     display: inline-block;
-    padding: 12px 30px;
+    padding: 10px 15px;
     background: #39D2B4;
-    color: #fff;
-    font-size: 1em;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
     transition: all .4s;
     cursor: pointer;
 }
@@ -47,4 +49,73 @@ input[type="file"] {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+h2 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+p {
+    color: gray;
+}
+
+.input-form {
+    margin-top: 16px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4a4a4a;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-button {
+    text-align: center;
+}
+
+.submit-button button {
+    background-color: #3b82f6;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.result-text {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
 }
