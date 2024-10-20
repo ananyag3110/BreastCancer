@@ -69,19 +69,16 @@
 </div>
 
 <script>
-    const form = document.getElementById('prediction-form');
     const submitButton = document.getElementById('submit-button');
     const resultElement = document.getElementById('result');
 
     submitButton.addEventListener('click', () => {
         const data = {
-            "data": [
-                parseInt(document.getElementById('cpw').value),
-                parseInt(document.getElementById('cpm').value),
-                parseInt(document.getElementById('rm').value),
-                parseInt(document.getElementById('rw').value),
-                parseInt(document.getElementById('aw').value)
-            ]
+            cpw: parseFloat(document.getElementById('cpw').value),
+            cpm: parseFloat(document.getElementById('cpm').value),
+            rm: parseFloat(document.getElementById('rm').value),
+            rw: parseFloat(document.getElementById('rw').value),
+            aw: parseFloat(document.getElementById('aw').value)
         };
     
         fetch('http://127.0.0.1:5000/predictform', {
@@ -93,18 +90,25 @@
             })
             .then(response => response.json())
             .then(data => {
-                if(data.result == 1){
-                    resultElement.textContent = `Prediction: Breast cancer detected.`;
-                }else{
-                    resultElement.textContent = `Prediction: Breast cancer not detected.`;
+                // Check if there's an error in the response
+                if (data.error) {
+                    resultElement.innerHTML = data.error; // Display error message
+                } else {
+                    // Display the result based on the prediction
+                    console.log(data.result)
+                    if (data.result === 1) {
+                        alert('Prediction: Breast cancer detected.');
+                    } else {
+                        alert('Prediction: Breast cancer not detected.');                    } 
                 }
-  
             })
             .catch(error => {
-                resultElement.textContent = 'An error occurred. Please try again.';
+                resultElement.innerHTML = 'An error occurred. Please try again.';
+                console.error('Error:', error); // Log the error for debugging
             });
-        });
-    </script>
+    });
+</script>
+
 
 </center>
 

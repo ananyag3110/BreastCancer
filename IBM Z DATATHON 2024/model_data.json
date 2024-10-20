@@ -6,13 +6,14 @@
         "class_weight": null,
         "criterion": "gini",
         "max_depth": null,
-        "max_features": "auto",
+        "max_features": "sqrt",
         "max_leaf_nodes": null,
         "max_samples": null,
         "min_impurity_decrease": 0.0,
         "min_samples_leaf": 1,
         "min_samples_split": 2,
         "min_weight_fraction_leaf": 0.0,
+        "monotonic_cst": null,
         "n_estimators": 100,
         "n_jobs": null,
         "oob_score": false,
@@ -21,10 +22,10 @@
         "warm_start": false
     },
     "feature_importances": [
-        0.017066510853870634,
-        0.23128505449270023,
-        0.20908198796090183,
-        0.32818616147960356,
-        0.21438028521292374
+        0.05153570208905799,
+        0.12231287776378146,
+        0.2866403905738754,
+        0.373399407098343,
+        0.16611162247494218
     ]
 }
