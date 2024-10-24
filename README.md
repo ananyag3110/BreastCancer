@@ -23,6 +23,9 @@ The primary objective of this project is to develop a robust system for the dete
 5. Open your browser to see the result `http://127.0.0.1:5000/` <br />
 6. Upload an image or enter the report details in order to predict the result.
 
+## Live Demo
+Watch the presentation and live demo [here](https://youtu.be/2KQlRSftZg0?si=s-lJkowQdvKZuHVC).
+
 ## Note
 If you encounter package related issues then it is mostly because of conficting python versions. <br />
 Check the compatibility and try again.
